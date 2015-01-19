@@ -1,4 +1,6 @@
-package com.devstream.smartapp;
+package com.devstream.smartapp.activity;
+
+import com.devstream.smartapp.R;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
