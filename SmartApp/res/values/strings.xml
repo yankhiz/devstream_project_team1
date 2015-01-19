@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">SmartApp</string>
+    <string name="app_name">smart_app</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="smart">SMART</string>
+    <string name="smart_abbr">Secure Maternity Appointment Recording Tracker</string>
+    <string name="usernameHint">Username</string>
+    <string name="passwordHint">Password</string>
+    <string name="buttonLogin">Login</string>
+    <string name="textView_Footer">&#169;National Maternity Hospital, Ireland</string>
+    <string name="textView_About">About</string>
+    <string name="viewappointments">View Appointments</string>
+    <string name="selectcalendar">Please select an appointment calendar.</string>
+    <string name="clinics">CLINICS</string>
+    <string name="visits">VISITS</string>
+    <string name="buttons">BUTTONS</string>
 
 </resources>
