@@ -24,7 +24,7 @@
         </activity>
         
         <activity
-            android:name=".SmartLandingPageActivity">  
+            android:name=".activity.SmartLandingPageActivity" >  
         </activity>
     </application>
 

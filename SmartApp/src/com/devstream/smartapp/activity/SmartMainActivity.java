@@ -31,8 +31,7 @@ public class SmartMainActivity extends ActionBarActivity {
 			@Override
 			public void onClick(View v) {
 				
-				Intent intent = new Intent(getApplicationContext(), 
-						SmartLandingPageActivity.class);
+				Intent intent = new Intent(SmartMainActivity.this,SmartLandingPageActivity.class);
 				startActivity(intent);				
 				
 			}
