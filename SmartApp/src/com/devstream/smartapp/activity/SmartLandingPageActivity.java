@@ -1,6 +1,6 @@
 package com.devstream.smartapp.activity;
 
-//test 
+
 import com.devstream.smartapp.R;
 
 import android.os.Bundle;
