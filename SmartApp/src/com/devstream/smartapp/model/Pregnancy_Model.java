@@ -2,6 +2,10 @@ package com.devstream.smartapp.model;
 
 public class Pregnancy_Model {
 
+	public Pregnancy_Model() {
+		super();
+	}
+
 	private String estimatedDeliveryDate;
 	private String additionalInfo;
 	private String birthMode;

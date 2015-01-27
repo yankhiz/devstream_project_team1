@@ -2,12 +2,20 @@ package com.devstream.smartapp.model;
 
 public class Clinic_Model {
 
+	public Clinic_Model() {
+		super();
+	}
+
 	private String name;
 	private String address;
 	private String openingTime;
 	private String closingTime;
 	private String recurrence;
 	private String type;
+	private String appointmentInterval;
+	private String days;
+	private String appointments;
+	private String announcements;
 
 	public String getType() {
 		return type;
@@ -16,11 +24,6 @@ public class Clinic_Model {
 	public void setType(String type) {
 		this.type = type;
 	}
-
-	private String appointmentInterval;
-	private String days;
-	private String appointments;
-	private String announcements;
 
 	public String getName() {
 		return name;

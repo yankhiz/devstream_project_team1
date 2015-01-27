@@ -2,6 +2,10 @@ package com.devstream.smartapp.model;
 
 public class Baby_Model {
 
+	public Baby_Model() {
+		super();
+	}
+
 	private String hospitalNumber;
 	private String name;
 	private String gender;
