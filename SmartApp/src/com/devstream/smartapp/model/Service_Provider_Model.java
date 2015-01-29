@@ -5,13 +5,15 @@ public class Service_Provider_Model {
 		super();
 	}
 
+	private int id;
 	private String name;
 	private String username;
 	private String email;
-	private Boolean active;
+	private boolean active;
 	private String password;
-	private Boolean admin;
+	private boolean admin;
 	private String jobOccupation;
+	private String jobLevel;
 	private String primaryPhone;
 	private String secondaryPhone;
 
@@ -39,11 +41,11 @@ public class Service_Provider_Model {
 		this.email = email;
 	}
 
-	public Boolean getActive() {
+	public boolean getActive() {
 		return active;
 	}
 
-	public void setActive(Boolean active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 
@@ -55,11 +57,11 @@ public class Service_Provider_Model {
 		this.password = password;
 	}
 
-	public Boolean getAdmin() {
+	public boolean getAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(Boolean admin) {
+	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
 
@@ -86,5 +88,23 @@ public class Service_Provider_Model {
 	public void setSecondaryPhone(String secondaryPhone) {
 		this.secondaryPhone = secondaryPhone;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getJobLevel() {
+		return jobLevel;
+	}
+
+	public void setJobLevel(String jobLevel) {
+		this.jobLevel = jobLevel;
+	}
+	
+	
 
 }

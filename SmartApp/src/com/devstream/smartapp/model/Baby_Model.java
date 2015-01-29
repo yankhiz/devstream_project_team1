@@ -2,21 +2,33 @@ package com.devstream.smartapp.model;
 
 public class Baby_Model {
 
-	public Baby_Model() {
-		super();
-	}
-
+	private int babyId;
 	private String hospitalNumber;
 	private String name;
 	private String gender;
-	private String wight;
-	private String vitaminK;
+	private String weight;
+	private boolean vitaminK;
 	private String hearing;
 	private String newbornScreeningTest;
 	private String birthOutcome;
 	private String deliveryDateTime;
 	private String pregnancy;
 	private String serviceUser;
+
+	public Baby_Model() {
+		super();
+	}
+
+	
+	public int getBabyId() {
+		return babyId;
+	}
+
+
+	public void setBabyId(int babyId) {
+		this.babyId = babyId;
+	}
+
 
 	public String getHospitalNumber() {
 		return hospitalNumber;
@@ -42,19 +54,19 @@ public class Baby_Model {
 		this.gender = gender;
 	}
 
-	public String getWight() {
-		return wight;
+	public String getWeight() {
+		return weight;
 	}
 
-	public void setWight(String wight) {
-		this.wight = wight;
+	public void setWeight(String wight) {
+		this.weight = wight;
 	}
 
-	public String getVitaminK() {
+	public boolean getVitaminK() {
 		return vitaminK;
 	}
 
-	public void setVitaminK(String vitaminK) {
+	public void setVitaminK(boolean vitaminK) {
 		this.vitaminK = vitaminK;
 	}
 

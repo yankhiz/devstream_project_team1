@@ -2,10 +2,6 @@ package com.devstream.smartapp.model;
 
 public class Appointment_Model {
 
-	public Appointment_Model() {
-		super();
-	}
-
 	private String date;
 	private String id;
 	private int service_provider_id;
@@ -14,6 +10,10 @@ public class Appointment_Model {
 	private String time;
 	private String visit_type;
 	private String service_option_ids;
+
+	public Appointment_Model() {
+		super();
+	}
 
 	public String getDate() {
 		return date;

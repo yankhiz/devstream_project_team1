@@ -6,7 +6,9 @@ public class Pregnancy_Model {
 		super();
 	}
 
+	private int pregnancyId;
 	private String estimatedDeliveryDate;
+	private String serviceUserId;
 	private String additionalInfo;
 	private String birthMode;
 	private String perineum;
@@ -16,7 +18,7 @@ public class Pregnancy_Model {
 	private String lastMenstrualPeriod;
 	private String createdAt;
 	private String babies;
-	private String serviceUser;
+	
 
 	public String getEstimatedDeliveryDate() {
 		return estimatedDeliveryDate;
@@ -98,12 +100,21 @@ public class Pregnancy_Model {
 		this.babies = babies;
 	}
 
-	public String getServiceUser() {
-		return serviceUser;
+	public int getPregnancyId() {
+		return pregnancyId;
 	}
 
-	public void setServiceUser(String serviceUser) {
-		this.serviceUser = serviceUser;
+	public void setPregnancyId(int pregnancyId) {
+		this.pregnancyId = pregnancyId;
 	}
+
+	public String getServiceUserId() {
+		return serviceUserId;
+	}
+
+	public void setServiceUserId(String serviceUserId) {
+		this.serviceUserId = serviceUserId;
+	}
+
 
 }

@@ -2,10 +2,7 @@ package com.devstream.smartapp.model;
 
 public class Clinic_Model {
 
-	public Clinic_Model() {
-		super();
-	}
-
+	private int clinicId;
 	private String name;
 	private String address;
 	private String openingTime;
@@ -14,8 +11,21 @@ public class Clinic_Model {
 	private String type;
 	private String appointmentInterval;
 	private String days;
+	private int serviceOptionId;
 	private String appointments;
 	private String announcements;
+
+	public Clinic_Model() {
+		super();
+	}
+
+	public int getClinicId() {
+		return clinicId;
+	}
+
+	public void setClinicId(int clinicId) {
+		this.clinicId = clinicId;
+	}
 
 	public String getType() {
 		return type;
@@ -75,6 +85,14 @@ public class Clinic_Model {
 
 	public String getDays() {
 		return days;
+	}
+
+	public int getServiceOptionId() {
+		return serviceOptionId;
+	}
+
+	public void setServiceOptionId(int serviceOptionId) {
+		this.serviceOptionId = serviceOptionId;
 	}
 
 	public void setDays(String days) {

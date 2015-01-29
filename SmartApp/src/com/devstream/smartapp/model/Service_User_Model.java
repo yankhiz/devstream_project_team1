@@ -3,6 +3,8 @@ package com.devstream.smartapp.model;
 import java.util.Date;
 
 public class Service_User_Model {
+	
+	
 	public Service_User_Model() {
 		super();
 	}
@@ -10,8 +12,7 @@ public class Service_User_Model {
 	private int id;
 	private String bloodType;
 	private Date estimatedDeliveryDate;
-	private String hospitalNumber;
-	private String hospitalAddress;
+	private String hospitalNumber;	
 	private String homeType;
 	private String homeAddress;
 	private String homeCounty;
@@ -56,15 +57,7 @@ public class Service_User_Model {
 	public void setHospitalNumber(String hospitalNumber) {
 		this.hospitalNumber = hospitalNumber;
 	}
-
-	public String getHospitalAddress() {
-		return hospitalAddress;
-	}
-
-	public void setHospitalAddress(String hospitalAddress) {
-		this.hospitalAddress = hospitalAddress;
-	}
-
+	
 	public String getHomeType() {
 		return homeType;
 	}
