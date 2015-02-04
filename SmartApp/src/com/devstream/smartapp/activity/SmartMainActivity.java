@@ -61,7 +61,7 @@ public class SmartMainActivity extends ActionBarActivity {
 			}
 		});
         
-        new LongOperation().execute((String[]) null);
+       // new LongOperation().execute((String[]) null);
     }
 
 

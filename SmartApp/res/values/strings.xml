@@ -24,5 +24,13 @@
     <string  name="ph_client_name">Nina Simone</string>
     <string  name="ph_gestation">24+3</string>
     <string  name="ibtn_i">i</string>
+    <string name="textViewSettings">SETTING</string>
+    <string name="textViewLook">LOOK</string>
+    <string name="textViewLogout">LOGOUT</string>
+    <string name="textViewHome">HOME</string>
+    <string name="textViewSync">SYNC</string>
+    <string name="textViewProvider">PROVIDER</string>
+    <string name="textViewUser">USER</string>
+    <string name="textViewBook">BOOK</string>
 
 </resources>
