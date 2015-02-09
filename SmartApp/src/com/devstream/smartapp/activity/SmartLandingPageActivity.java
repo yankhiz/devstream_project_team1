@@ -2,8 +2,12 @@ package com.devstream.smartapp.activity;
 
 import com.devstream.smartapp.R;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -21,14 +25,27 @@ public class SmartLandingPageActivity extends ActionBarActivity implements
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.smart_landingpage);
+		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setTitle("View Appointments");
+		getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#B2CCFF")));
 		initUI();
 
 	}
 	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		if(id == R.id.home){
+			NavUtils.navigateUpFromSameTask(this);
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 	public void initUI(){
+		
 		buttonClinics = (Button) findViewById(R.id.buttonClinics);
 		buttonClinics.setOnClickListener(this);
 		

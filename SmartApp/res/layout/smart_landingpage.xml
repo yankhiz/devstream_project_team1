@@ -2,162 +2,173 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="0.5dp"
-    android:background="#FFFFFF"
+    android:layout_margin="10dp"
+    android:background="@drawable/smart_main_border"
     android:orientation="vertical"
     tools:context="com.devstream_team1.activities.SmartMainActivity" >
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".30"
-        android:background="#777777"
-        android:gravity="center"
-        android:text="@string/viewappointments"
-        android:textSize="30sp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight=".50"
-        android:gravity="center"
-        android:text="@string/selectcalendar"
-        android:textSize="20sp" />
-
-    <Button
-        android:id="@+id/buttonClinics"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="1.0"
-        android:background="#B2B2B2"
-        android:gravity="center"
-        android:text="@string/clinics"
-        android:textSize="40sp" />
-
-    <Button
-        android:id="@+id/buttonVisits"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_weight="1.0"
-        android:background="#B2B2B2"
-        android:gravity="center"
-        android:text="@string/visits"
-        android:textSize="40sp" />
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp" >
-
-        <LinearLayout
-            android:id="@+id/layoutLook"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#B2B2B2"
-            android:visibility="invisible"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/textView_Provider"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#E8E8E8"
-                android:layout_margin="1dp"
-                android:layout_weight="1.0"
-                android:drawableBottom="@drawable/provider"
-                android:gravity="center"
-                android:text="@string/textViewProvider" />
-
-            <TextView
-                android:id="@+id/textView_User"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-               android:background="#E8E8E8"
-                android:layout_margin="1dp"
-                android:layout_weight="1.0"
-                android:drawableBottom="@drawable/user"
-                android:gravity="center"
-                android:text="@string/textViewUser" />
-
-            <TextView
-                android:id="@+id/textView_Book"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#E8E8E8"
-                android:layout_margin="1dp"
-                android:layout_weight="1.0"
-                android:drawableBottom="@drawable/book"
-                android:gravity="center"
-                android:text="@string/textViewBook" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/layoutSetting"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#B2B2B2"   
-            android:visibility="invisible"       
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/textView_Logout"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#E8E8E8"
-                android:layout_margin="1dp"
-                android:layout_weight="1.0"
-                android:drawableBottom="@drawable/logout"
-                android:gravity="center"
-                android:text="@string/textViewLogout" 
-                android:textSize="12sp"/>
-
-            <TextView
-                android:id="@+id/textView_Home"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#E8E8E8"
-                android:layout_margin="1dp"
-                android:layout_weight="1.0"
-                android:drawableBottom="@drawable/home"
-                android:gravity="center"
-                android:text="@string/textViewHome" 
-                android:textSize="12sp"/>
-
-            <TextView
-                android:id="@+id/textView_Sync"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#E8E8E8"
-                android:layout_margin="1dp"
-                android:layout_weight="1.0"
-                android:drawableBottom="@drawable/sync"
-                android:gravity="center"
-                android:text="@string/textViewSync" 
-                android:textSize="12sp"/>
-
-        </LinearLayout>
-    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="2dp"
+        android:layout_margin="0.5dp"
+        android:background="#FFFFFF"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:gravity="center"
+            android:paddingBottom="30dp"
+            android:paddingTop="30dp"
+            android:text="@string/selectcalendar"
+            android:textColor="#3c6bd3"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+
+        <Button
+            android:id="@+id/buttonClinics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="@string/clinics"
+            android:textSize="40sp" />
+
+        <Button
+            android:id="@+id/buttonVisits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="125dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/button_login"
+            android:gravity="center"
+            android:paddingBottom="15dp"
+            android:paddingTop="15dp"
+            android:text="@string/visits"
+            android:textSize="40sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="0.5dp"
+            android:layout_weight="1.0"
+            android:background="#FFFFFF" >
+
+            <LinearLayout
+                android:id="@+id/layoutLook"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#B2B2B2"
+                android:orientation="horizontal"
+                android:visibility="invisible" >
+
+                <TextView
+                    android:id="@+id/textView_Provider"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1.0"
+                    android:background="#B2CCFF"
+                    android:drawableBottom="@drawable/home"
+                    android:gravity="center"
+                    android:text="@string/textViewProvider" />
+
+                <TextView
+                    android:id="@+id/textView_User"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1.0"
+                    android:background="#B2CCFF"
+                    android:drawableBottom="@drawable/user"
+                    android:gravity="center"
+                    android:text="@string/textViewUser"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textView_Book"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1.0"
+                    android:background="#B2CCFF"
+                    android:drawableBottom="@drawable/book"
+                    android:gravity="center"
+                    android:text="@string/textViewBook"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutSetting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="10dp"
+                android:background="#B2B2B2"
+                android:orientation="horizontal"
+                android:visibility="invisible" >
+
+                <TextView
+                    android:id="@+id/textView_Logout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1.0"
+                    android:background="#B2CCFF"
+                    android:drawableBottom="@drawable/logout"
+                    android:gravity="center"
+                    android:text="@string/textViewLogout"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textView_Home"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1.0"
+                    android:background="#B2CCFF"
+                    android:drawableBottom="@drawable/home"
+                    android:gravity="center"
+                    android:text="@string/textViewHome"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/textView_Sync"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1.0"
+                    android:background="#B2CCFF"
+                    android:drawableBottom="@drawable/sync"
+                    android:gravity="center"
+                    android:text="@string/textViewSync"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
         android:background="#777777"
-        android:gravity="center"
         android:orientation="horizontal" >
 
         <TextView
             android:id="@+id/textView_Settings"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#B2B2B2"
             android:layout_margin="1dp"
             android:layout_weight="1.0"
+            android:background="#B2CCFF"
             android:drawableBottom="@drawable/setting"
             android:gravity="center"
             android:text="@string/textViewSettings"
@@ -167,9 +178,9 @@
             android:id="@+id/textView_Look"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:background="#B2B2B2"
             android:layout_margin="1dp"
             android:layout_weight="1.0"
+            android:background="#B2CCFF"
             android:drawableBottom="@drawable/look"
             android:gravity="center"
             android:text="@string/textViewLook"
