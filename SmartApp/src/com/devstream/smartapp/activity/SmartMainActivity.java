@@ -10,6 +10,8 @@ import java.net.URI;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.http.HttpConnection;
 import org.apache.http.HttpEntity;
@@ -43,15 +45,15 @@ public class SmartMainActivity extends ActionBarActivity {
 	EditText editTextUserName, editTextPassword;
 	Button buttonLogin;
 	TextView textViewAbout;
-	
-	private Service_Provider_Model serviceProvider;
+
 	private static final String TABLE_URL = "http://54.72.7.91:8888/service_providers";
 	private static final String API_KEY = "6f9a1abf-443e-4d18-a1a8-93dd39f69d6a";
 	private String token;
 	private URL objectUrl;
-	
-	String userName;
 
+	private String userName, userPass;
+	private List<Service_Provider_Model> listOfProvider;
+	private Service_Provider_Model serviceProvider;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,22 +65,9 @@ public class SmartMainActivity extends ActionBarActivity {
 		editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 		textViewAbout = (TextView) findViewById(R.id.textViewAbout);
 		buttonLogin = (Button) findViewById(R.id.buttonLogin);
-		buttonLogin.setOnClickListener(new View.OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(SmartMainActivity.this,
-						SmartLandingPageActivity.class);
-				//startActivity(intent);
-				
-				new LogInTask().execute();
-				if(editTextUserName.getText().toString().equals("john")){
-					startActivity(intent);
-				}
-			}
-		});
+		new LogInTask().execute();
 
-		
 	}
 
 	@Override
@@ -102,11 +91,13 @@ public class SmartMainActivity extends ActionBarActivity {
 
 	/**
 	 * 
-	 * @author allan
-	 *inner class extending Asynctask
+	 * @author allan inner class extending Asynctask
 	 */
 	private class LogInTask extends AsyncTask<String, Void, String> {
 		HttpURLConnection con;
+		JSONObject jsonNew;
+		JSONArray query;
+
 		@Override
 		protected void onPreExecute() {
 
@@ -116,33 +107,42 @@ public class SmartMainActivity extends ActionBarActivity {
 		protected String doInBackground(String... params) {
 			Log.d("asynctask", "doInbackground called");
 			token = new HttpAuthClazz().getTheAuthKey();
+			listOfProvider = new ArrayList<Service_Provider_Model>();
+
 			try {
-				
+
 				objectUrl = new URL(TABLE_URL);
 				con = (HttpURLConnection) objectUrl.openConnection();
 				con.setRequestMethod("GET");
-				//add request header
+				// add request header
 				con.setRequestProperty("Api-Key", API_KEY);
 				con.setRequestProperty("Auth-Token", token);
-				
-				BufferedReader in =  new BufferedReader(new InputStreamReader(con.getInputStream()));
-				
+
+				BufferedReader in = new BufferedReader(new InputStreamReader(
+						con.getInputStream()));
+
 				String inputLine;
 				StringBuffer response = new StringBuffer();
-				
-				while((inputLine = in.readLine()) != null){
+
+				while ((inputLine = in.readLine()) != null) {
 					response.append(inputLine);
 				}
 				in.close();
-				
+
 				String responseString = response.toString();
-				JSONObject jsonNew = new JSONObject(responseString);
-				JSONArray query = jsonNew.getJSONArray("service_providers");
-				
-				for(int i=0; i<query.length(); i++){
-					userName = ((JSONObject)query.get(i)).get("username").toString();
+				jsonNew = new JSONObject(responseString);
+				query = jsonNew.getJSONArray("service_providers");
+
+				for (int i = 0; i < query.length(); i++) {
+					userName = ((JSONObject) query.get(i)).get("username")
+							.toString();
+					userPass = ((JSONObject) query.get(i)).get("password")
+							.toString();
+
+					listOfProvider.add(new Service_Provider_Model(userName,
+							userPass));
 				}
-				
+
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -152,18 +152,35 @@ public class SmartMainActivity extends ActionBarActivity {
 			}
 			return null;
 		}
-		
+
 		@Override
 		protected void onProgressUpdate(Void... values) {
 		}
 
 		@Override
 		protected void onPostExecute(String result) {
-			Log.d("asynctask", "postexecute called");
-			
-		}
+			Log.d("allan", "postexecute called");
+			buttonLogin.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent(SmartMainActivity.this,
+							SmartLandingPageActivity.class);
 
-		
+					for (Service_Provider_Model model : listOfProvider) {
+						
+						if(model.getUsername().equals(editTextUserName.getText().toString())){
+							Log.d("test", model.getUsername());
+							startActivity(intent);
+						}else {
+							// inflate view for error message dialog here
+							Toast.makeText(SmartMainActivity.this,
+									"Invalid username and password",
+									Toast.LENGTH_SHORT).show();
+						}		
+					}
+				}
+			});
+		}
 	}
 
-}
+}//end class

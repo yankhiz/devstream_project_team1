@@ -1,9 +1,9 @@
 package com.devstream.smartapp.model;
 
 public class Service_Provider_Model {
-	public Service_Provider_Model() {
-		super();
-	}
+	
+
+	
 
 	private int id;
 	private String name;
@@ -16,6 +16,11 @@ public class Service_Provider_Model {
 	private String jobLevel;
 	private String primaryPhone;
 	private String secondaryPhone;
+	
+	public Service_Provider_Model(String userName, String userPass) {
+		this.username = userName;
+		this.password = userPass;
+	}
 
 	public String getName() {
 		return name;
