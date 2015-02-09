@@ -51,6 +51,7 @@ public class SmartMainActivity extends ActionBarActivity {
 	private String token;
 	private URL objectUrl;
 
+	boolean isRegistered;
 	private String userName, userPass;
 	private List<Service_Provider_Model> listOfProvider;
 	private Service_Provider_Model serviceProvider;
@@ -89,6 +90,7 @@ public class SmartMainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
+	
 	/**
 	 * 
 	 * @author allan inner class extending Asynctask
@@ -156,7 +158,7 @@ public class SmartMainActivity extends ActionBarActivity {
 		@Override
 		protected void onProgressUpdate(Void... values) {
 		}
-
+		
 		@Override
 		protected void onPostExecute(String result) {
 			Log.d("allan", "postexecute called");
@@ -166,17 +168,19 @@ public class SmartMainActivity extends ActionBarActivity {
 					Intent intent = new Intent(SmartMainActivity.this,
 							SmartLandingPageActivity.class);
 
+					isRegistered=false;
 					for (Service_Provider_Model model : listOfProvider) {
 						
 						if(model.getUsername().equals(editTextUserName.getText().toString())){
-							Log.d("test", model.getUsername());
-							startActivity(intent);
-						}else {
-							// inflate view for error message dialog here
-							Toast.makeText(SmartMainActivity.this,
-									"Invalid username and password",
-									Toast.LENGTH_SHORT).show();
-						}		
+							isRegistered=true;
+						}
+					}
+					
+					if(isRegistered == true){
+						startActivity(intent);
+					}else{
+						//inflate a view for errormessage dialog here
+						Toast.makeText(getApplicationContext(), "Invalid username", 5).show();
 					}
 				}
 			});
