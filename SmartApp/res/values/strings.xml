@@ -32,5 +32,6 @@
     <string name="textViewProvider">PROVIDER</string>
     <string name="textViewUser">USER</string>
     <string name="textViewBook">BOOK</string>
+    <string name="select_service_option">Select Service Option</string>
 
 </resources>

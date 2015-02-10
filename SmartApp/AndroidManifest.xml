@@ -29,6 +29,10 @@
             android:name=".activity.SmartLandingPageActivity" >  
             <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activity.SmartMainActivity"/>
         </activity>
+        <activity
+            android:name=".activity.SmartServiceOptionActivity" > 
+            <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activity.SmartLandingPageActivity"/>
+        </activity>
     </application>
 
 </manifest>

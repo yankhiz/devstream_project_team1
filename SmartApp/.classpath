@@ -6,5 +6,13 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="/appcompat_v7"/>
+	<classpathentry kind="lib" path="/home/allan/SOFTWARE_DEVELOPMENT/Android_Development/android-sdk-linux/platforms/android-21/android.jar" sourcepath="/home/allan/SOFTWARE_DEVELOPMENT/Android_Development/android-sdk-linux/sources/android-21">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/home/allan/SOFTWARE_DEVELOPMENT/Android_Development/android-sdk-linux/docs/reference"/>
+		</attributes>
+		<accessrules>
+			<accessrule kind="nonaccessible" pattern="com/android/internal/**"/>
+		</accessrules>
+	</classpathentry>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -1,7 +1,9 @@
 package com.devstream.smartapp.activity;
 
 import com.devstream.smartapp.R;
+import com.devstream.smartapp.model.Appointment_Service_Option_Model;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ public class SmartLandingPageActivity extends ActionBarActivity implements
 			textViewBook, textViewLOgout, textViewHome, textViewSync;
 	Button buttonClinics, buttonVisits;
 	LinearLayout llSettings, llLook;
+	Intent intent;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +87,8 @@ public class SmartLandingPageActivity extends ActionBarActivity implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.buttonClinics:
-			Toast.makeText(getApplicationContext(), "CLINIC", Toast.LENGTH_SHORT).show();
+			intent = new Intent(SmartLandingPageActivity.this, SmartServiceOptionActivity.class);
+			startActivity(intent);
 			break;
 		case R.id.buttonVisits:
 			Toast.makeText(getApplicationContext(), "VISITS", Toast.LENGTH_SHORT).show();
