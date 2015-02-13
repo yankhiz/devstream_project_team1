@@ -7,8 +7,8 @@
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
     android:paddingLeft="30dp"
-    android:drawableEnd="@drawable/abc_ic_voice_search_api_mtrl_alpha"
-    android:drawableRight="@drawable/abc_ic_voice_search_api_mtrl_alpha"
+    android:drawableEnd="@drawable/ic_action_next_item"
+    android:drawableRight="@drawable/ic_action_next_item"
     android:background="#B2CCFF">
     
 
