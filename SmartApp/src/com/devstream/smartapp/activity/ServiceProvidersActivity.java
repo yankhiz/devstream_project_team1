@@ -96,7 +96,7 @@ public class ServiceProvidersActivity extends ActionBarActivity{
 		@Override
 		protected String doInBackground(String... params) {
 			Log.d("asynctask", "doInbackground called");
-			token = new HttpAuthClazz().getTheAuthKey();
+			token = HttpAuthClazz.getInstance().getAuthKey();
 			try {
 				
 				objectUrl = new URL(TABLE_URL);

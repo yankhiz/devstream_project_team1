@@ -30,6 +30,7 @@ public class SmartLandingPageActivity extends ActionBarActivity implements
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.smart_landingpage);
+		getSupportActionBar().setElevation(0);//remove the shadow under actionbar
 		getSupportActionBar().setHomeButtonEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().setTitle("View Appointments");

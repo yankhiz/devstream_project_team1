@@ -18,15 +18,20 @@ import com.devstream.smartapp.model.Service_Provider_Model;
 import com.devstream.smartapp.utility.HttpAuthClazz;
 
 import android.support.v7.app.ActionBarActivity;
+import android.text.InputType;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.hardware.input.InputManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
 
 public class SmartMainActivity extends ActionBarActivity {
@@ -49,8 +54,11 @@ public class SmartMainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_smart_main);
+		getSupportActionBar().setElevation(0);// remove the shadow under
+												// actionbar
 		getSupportActionBar().setBackgroundDrawable(
 				new ColorDrawable(Color.parseColor("#B2CCFF")));
+
 		editTextUserName = (EditText) findViewById(R.id.editTextUsername);
 		editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 		textViewAbout = (TextView) findViewById(R.id.textViewAbout);
@@ -79,7 +87,17 @@ public class SmartMainActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	
+	/**
+	 * implement this method to hide the softkeyboard when you tap anywhere else
+	 * in the screen aside from edittext
+	 */
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+		imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+		return super.onTouchEvent(event);
+	}
+
 	/**
 	 * 
 	 * @author allan inner class extending Asynctask
@@ -97,7 +115,7 @@ public class SmartMainActivity extends ActionBarActivity {
 		@Override
 		protected String doInBackground(String... params) {
 			Log.d("asynctask", "doInbackground called");
-			token = new HttpAuthClazz().getTheAuthKey();
+			token = HttpAuthClazz.getInstance().getAuthKey();
 			listOfProvider = new ArrayList<Service_Provider_Model>();
 
 			try {
@@ -147,7 +165,7 @@ public class SmartMainActivity extends ActionBarActivity {
 		@Override
 		protected void onProgressUpdate(Void... values) {
 		}
-		
+
 		@Override
 		protected void onPostExecute(String result) {
 			Log.d("allan", "postexecute called");
@@ -157,23 +175,25 @@ public class SmartMainActivity extends ActionBarActivity {
 					Intent intent = new Intent(SmartMainActivity.this,
 							SmartLandingPageActivity.class);
 
-					isRegistered=false;
+					isRegistered = false;
 					for (Service_Provider_Model model : listOfProvider) {
-						
-						if(model.getUsername().equals(editTextUserName.getText().toString())){
-							isRegistered=true;
+
+						if (model.getUsername().equals(
+								editTextUserName.getText().toString())) {
+							isRegistered = true;
 						}
 					}
-					
-					if(isRegistered == true){
+
+					if (isRegistered == true) {
 						startActivity(intent);
-					}else{
-						//inflate a view for errormessage dialog here
-						Toast.makeText(getApplicationContext(), "Invalid username", 5).show();
+					} else {
+						// inflate a view for errormessage dialog here
+						Toast.makeText(getApplicationContext(),
+								"Invalid username", 5).show();
 					}
 				}
 			});
 		}
 	}
 
-}//end class
+}// end class
