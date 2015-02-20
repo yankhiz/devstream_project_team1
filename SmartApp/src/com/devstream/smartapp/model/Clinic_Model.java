@@ -9,7 +9,7 @@ public class Clinic_Model {
 	private String closingTime;
 	private String recurrence;
 	private String type;
-	private String appointmentInterval;
+	private final static int APPOINTMENT_INTERVAL = 15;
 	private String days;
 	private int serviceOptionId;
 	private String appointments;
@@ -17,6 +17,10 @@ public class Clinic_Model {
 
 	public Clinic_Model() {
 		super();
+	}
+
+	public Clinic_Model(String name) {
+		this.name=name;
 	}
 
 	public int getClinicId() {
@@ -75,12 +79,8 @@ public class Clinic_Model {
 		this.recurrence = recurrence;
 	}
 
-	public String getAppointmentInterval() {
-		return appointmentInterval;
-	}
-
-	public void setAppointmentInterval(String appointmentInterval) {
-		this.appointmentInterval = appointmentInterval;
+	public int getAppointmentInterval() {
+		return APPOINTMENT_INTERVAL;
 	}
 
 	public String getDays() {

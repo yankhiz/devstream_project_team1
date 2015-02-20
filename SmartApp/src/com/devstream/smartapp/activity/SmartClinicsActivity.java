@@ -14,60 +14,70 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.devstream.smartapp.R;
-import com.devstream.smartapp.model.Appointment_Service_Option_Model;
+import com.devstream.smartapp.adapter.AdapterClinic;
+import com.devstream.smartapp.model.Clinic_Model;
 import com.devstream.smartapp.utility.HttpAuthClazz;
 
+import android.support.v7.app.ActionBarActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class SmartServiceOptionActivity extends ActionBarActivity {
-
-	private static final String TABLE_URL = "http://54.72.7.91:8888/service_options";
+public class SmartClinicsActivity extends ActionBarActivity {
+	
+	
+	private static final String TABLE_URL = "http://54.72.7.91:8888/clinics";
 	private static final String API_KEY = "6f9a1abf-443e-4d18-a1a8-93dd39f69d6a";
 	private String token;
 	private URL objectUrl;
 	private Intent intent;
-
-	private String name;
-	private List<String> listOfServiceOption;
+	private Clinic_Model clinic_Model;
+	
+	private ArrayList<Clinic_Model> listOfClinic;
 	private ListView listView;
+	private TextView textViewClinicName;
+	
+	private AdapterClinic adapterClinic;
+	
+	
+	private String clinicName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_service_option);
+		setContentView(R.layout.activity_clinics);
 		getSupportActionBar().setElevation(0);//remove the shadow under actionbar
 		getSupportActionBar().setHomeButtonEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		getSupportActionBar().setTitle("Service Options");
+		getSupportActionBar().setTitle("Clinics");
 		getSupportActionBar().setBackgroundDrawable(
 				new ColorDrawable(Color.parseColor("#B2CCFF")));
-
-		listView = (ListView) findViewById(R.id.listView_ServiceOption);
-		new ServiceOptionTask().execute();
-		registeredClickCallback();
+		
+		
+		listView = (ListView) findViewById(R.id.listView_clinics);
+		
+		new ClinicTask().execute();
+		
+		
 	}
 
 	/**
 	 * 
 	 * @author allan inner class extending Asynctask
 	 */
-	private class ServiceOptionTask extends AsyncTask<String, Void, String> {
+	private class ClinicTask extends AsyncTask<String, Void, String> {
 		HttpURLConnection con;
 		JSONObject jsonNew;
 		JSONArray query;
+		
 
 		@Override
 		protected void onPreExecute() {
@@ -78,7 +88,8 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 		protected String doInBackground(String... params) {
 			Log.d("asynctask", "doInbackground called");
 			token = HttpAuthClazz.getInstance().getAuthKey();
-			listOfServiceOption = new ArrayList<String>();
+			listOfClinic = new ArrayList<Clinic_Model>();
+			clinic_Model = new Clinic_Model();
 
 			try {
 
@@ -102,11 +113,13 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 
 				String responseString = response.toString();
 				jsonNew = new JSONObject(responseString);
-				query = jsonNew.getJSONArray("service_options");
+				query = jsonNew.getJSONArray("clinics");
 
+				
 				for (int i = 0; i < query.length(); i++) {
-					name = ((JSONObject) query.get(i)).get("name").toString();
-					listOfServiceOption.add(name);
+					clinicName = ((JSONObject) query.get(i)).get("name").toString();
+					clinic_Model.setName(clinicName);
+					listOfClinic.add(new Clinic_Model(clinic_Model.getName()));
 				}
 
 			} catch (MalformedURLException e) {
@@ -126,51 +139,15 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(String result) {
 			Log.d("allan", "postexecute called");
-			ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-					SmartServiceOptionActivity.this,
-					R.layout.listview_for_servive_option, listOfServiceOption);
+			adapterClinic = new AdapterClinic(SmartClinicsActivity.this, listOfClinic);
 
-			listView.setAdapter(adapter);
+			listView.setAdapter(adapterClinic);
 		}
 	}
-
-	private void registeredClickCallback() {
-		
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				TextView textView = (TextView) view;
-
-				switch (position) {
-				case 0:
-					intent = new Intent(SmartServiceOptionActivity.this, SmartClinicsActivity.class );
-					startActivity(intent);
-					break;
-				case 1:
-					Toast.makeText(SmartServiceOptionActivity.this,
-							textView.getText(), 10).show();
-					break;
-				case 2:
-					Toast.makeText(SmartServiceOptionActivity.this,
-							textView.getText(), 10).show();
-					break;
-				case 3:
-					Toast.makeText(SmartServiceOptionActivity.this,
-							textView.getText(), 10).show();
-					break;
-				case 4:
-					Toast.makeText(SmartServiceOptionActivity.this,
-							textView.getText(), 10).show();
-					break;
-				default:
-					break;
-				}
-
-				
-			}
-		});
-	}
-
-}
+	
+	
+	
+	
+	
+	
+}//end of class

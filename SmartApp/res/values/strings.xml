@@ -19,11 +19,11 @@
     <string name="btn_next">Next &gt;</string>
     <string name="ph_clinic_name">Placeholder Clinic Name</string>
     <string name="ph_date">Placeholder Date</string>
-    <string  name="ph_sched_appointments">Placeholder Scheduled Appointments</string>
-    <string  name="ph_time">12.00</string>
-    <string  name="ph_client_name">Nina Simone</string>
-    <string  name="ph_gestation">24+3</string>
-    <string  name="ibtn_i">i</string>
+    <string name="ph_sched_appointments">Placeholder Scheduled Appointments</string>
+    <string name="ph_time">12.00</string>
+    <string name="ph_client_name">Nina Simone</string>
+    <string name="ph_gestation">24+3</string>
+    <string name="ibtn_i">i</string>
     <string name="textViewSettings">SETTING</string>
     <string name="textViewLook">LOOK</string>
     <string name="textViewLogout">LOGOUT</string>
@@ -33,5 +33,7 @@
     <string name="textViewUser">USER</string>
     <string name="textViewBook">BOOK</string>
     <string name="select_service_option">Select Service Option</string>
+    <string name="title_activity_clinics">ClinicsActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

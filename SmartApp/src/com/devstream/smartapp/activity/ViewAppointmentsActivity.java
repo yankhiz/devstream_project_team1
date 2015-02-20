@@ -17,7 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SmartLandingPageActivity extends ActionBarActivity implements
+public class ViewAppointmentsActivity extends ActionBarActivity implements
 		OnClickListener {
 
 	TextView textViewSetting, textViewLook, textViewProvider, textViewUser,
@@ -29,7 +29,7 @@ public class SmartLandingPageActivity extends ActionBarActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.smart_landingpage);
+		setContentView(R.layout.activity_view_appointments);
 		getSupportActionBar().setElevation(0);//remove the shadow under actionbar
 		getSupportActionBar().setHomeButtonEnabled(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -88,7 +88,7 @@ public class SmartLandingPageActivity extends ActionBarActivity implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.buttonClinics:
-			intent = new Intent(SmartLandingPageActivity.this, SmartServiceOptionActivity.class);
+			intent = new Intent(ViewAppointmentsActivity.this, SmartServiceOptionActivity.class);
 			startActivity(intent);
 			break;
 		case R.id.buttonVisits:

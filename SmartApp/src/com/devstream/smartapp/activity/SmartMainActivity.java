@@ -173,7 +173,7 @@ public class SmartMainActivity extends ActionBarActivity {
 				@Override
 				public void onClick(View v) {
 					Intent intent = new Intent(SmartMainActivity.this,
-							SmartLandingPageActivity.class);
+							ViewAppointmentsActivity.class);
 
 					isRegistered = false;
 					for (Service_Provider_Model model : listOfProvider) {
