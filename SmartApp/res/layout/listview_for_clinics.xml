@@ -1,20 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="wrap_content"
+    android:background="#B2CCFF"
+    android:layout_marginTop="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:drawableEnd="@drawable/ic_action_next_item"
+    android:drawableRight="@drawable/ic_action_next_item"
+    android:orientation="vertical" >
 
+   
     <TextView
         android:id="@+id/textViewClinicName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:background="#B2CCFF"
-        android:drawableEnd="@drawable/ic_action_next_item"
-        android:drawableRight="@drawable/ic_action_next_item"
-        android:paddingBottom="10dp"
-        android:paddingLeft="30dp"
-        android:paddingTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:hint="Clinic Name"
+        android:textSize="26sp" >
+    </TextView>
+    <TextView
+        android:id="@+id/textViewClinicLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewClinicName"
+        android:layout_marginLeft="50dp"
+        android:hint="Location"
         android:textSize="12sp" >
     </TextView>
+    <TextView
+        android:id="@+id/textViewClinicWeekly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewClinicLocation"
+        android:layout_marginLeft="50dp"
+        android:hint="Weekly"
+        android:textSize="16sp" >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/textViewClinicDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewClinicLocation"
+        android:layout_toRightOf="@+id/textViewClinicWeekly"
+        android:layout_marginLeft="10dp"
+        android:hint="day"
+        android:textSize="16sp" >
+    </TextView>
 
-</LinearLayout>
+</RelativeLayout>

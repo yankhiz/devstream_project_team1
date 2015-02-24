@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextClock;
 import android.widget.TextView;
 
 public class AdapterClinic extends BaseAdapter {
@@ -47,10 +48,18 @@ public class AdapterClinic extends BaseAdapter {
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		
 		View view = inflater.inflate(R.layout.listview_for_clinics, parent,false);
+		TextView textViewClinicLocation = (TextView) view.findViewById(R.id.textViewClinicLocation);
 		TextView textViewClinicName = (TextView) view.findViewById(R.id.textViewClinicName);
+		TextView textViewRecurrence = (TextView) view.findViewById(R.id.textViewClinicWeekly);
+		TextView textViewDay = (TextView) view.findViewById(R.id.textViewClinicDay);
 		
 		Clinic_Model clinic_Model = clinicList.get(position);
+		
+		textViewClinicLocation.setText(clinic_Model.getAddress());
 		textViewClinicName.setText(clinic_Model.getName());
+		textViewRecurrence.setText(clinic_Model.getRecurrence());
+		textViewDay.setText(clinic_Model.getDay());
+		
 		
 		return view;
 	}

@@ -40,6 +40,7 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 	private Intent intent;
 
 	private String name;
+	private int serviceOptionId;
 	private List<String> listOfServiceOption;
 	private ListView listView;
 
@@ -106,6 +107,7 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 
 				for (int i = 0; i < query.length(); i++) {
 					name = ((JSONObject) query.get(i)).get("name").toString();
+					serviceOptionId =  ((JSONObject) query.get(i)).getInt("id");
 					listOfServiceOption.add(name);
 				}
 
@@ -146,23 +148,28 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 				switch (position) {
 				case 0:
 					intent = new Intent(SmartServiceOptionActivity.this, SmartClinicsActivity.class );
+					intent.putExtra("service_option_ids", 1);
 					startActivity(intent);
 					break;
 				case 1:
-					Toast.makeText(SmartServiceOptionActivity.this,
-							textView.getText(), 10).show();
+					intent = new Intent(SmartServiceOptionActivity.this, SmartClinicsActivity.class );
+					intent.putExtra("service_option_ids", 2);
+					startActivity(intent);
 					break;
 				case 2:
-					Toast.makeText(SmartServiceOptionActivity.this,
-							textView.getText(), 10).show();
+					intent = new Intent(SmartServiceOptionActivity.this, SmartClinicsActivity.class );
+					intent.putExtra("service_option_ids", 3);
+					startActivity(intent);
 					break;
 				case 3:
-					Toast.makeText(SmartServiceOptionActivity.this,
-							textView.getText(), 10).show();
+					intent = new Intent(SmartServiceOptionActivity.this, SmartClinicsActivity.class );
+					intent.putExtra("service_option_ids", 4);
+					startActivity(intent);
 					break;
 				case 4:
-					Toast.makeText(SmartServiceOptionActivity.this,
-							textView.getText(), 10).show();
+					intent = new Intent(SmartServiceOptionActivity.this, SmartClinicsActivity.class );
+					intent.putExtra("service_option_ids", 5);
+					startActivity(intent);
 					break;
 				default:
 					break;

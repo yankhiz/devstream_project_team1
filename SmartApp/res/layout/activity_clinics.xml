@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" 
         android:divider="@android:color/transparent"
-  		android:dividerHeight="10.0sp"
+  		android:dividerHeight="5.0sp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="50dp">

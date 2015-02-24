@@ -7,7 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,6 +29,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,6 +44,7 @@ public class SmartClinicsActivity extends ActionBarActivity {
 	private URL objectUrl;
 	private Intent intent;
 	private Clinic_Model clinic_Model;
+	private Bundle extras;
 	
 	private ArrayList<Clinic_Model> listOfClinic;
 	private ListView listView;
@@ -47,8 +52,11 @@ public class SmartClinicsActivity extends ActionBarActivity {
 	
 	private AdapterClinic adapterClinic;
 	
-	
+	private String address;
 	private String clinicName;
+	private String recurrence;
+	private String day;
+	private int serviceOptionIds, SO_Id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +69,25 @@ public class SmartClinicsActivity extends ActionBarActivity {
 		getSupportActionBar().setBackgroundDrawable(
 				new ColorDrawable(Color.parseColor("#B2CCFF")));
 		
+		setSO_Id();
+		Log.d("mytag", SO_Id+"");
 		
 		listView = (ListView) findViewById(R.id.listView_clinics);
 		
-		new ClinicTask().execute();
-		
+		new ClinicTask().execute();	
 		
 	}
+	
+	
+
+	public void setSO_Id() {		
+		if(extras == null){
+			extras = getIntent().getExtras();
+			SO_Id = extras.getInt("service_option_ids");
+		}
+	}
+
+
 
 	/**
 	 * 
@@ -90,6 +110,8 @@ public class SmartClinicsActivity extends ActionBarActivity {
 			token = HttpAuthClazz.getInstance().getAuthKey();
 			listOfClinic = new ArrayList<Clinic_Model>();
 			clinic_Model = new Clinic_Model();
+			JSONObject jsonObject;			
+			String days[] = {"monday","tuesday","wednesday","thursday","friday","saturday","sunday"};
 
 			try {
 
@@ -102,6 +124,8 @@ public class SmartClinicsActivity extends ActionBarActivity {
 
 				BufferedReader in = new BufferedReader(new InputStreamReader(
 						con.getInputStream()));
+				
+				//54.72.7.91/clinics/{1,2,3,4}
 
 				String inputLine;
 				StringBuffer response = new StringBuffer();
@@ -113,14 +137,49 @@ public class SmartClinicsActivity extends ActionBarActivity {
 
 				String responseString = response.toString();
 				jsonNew = new JSONObject(responseString);
-				query = jsonNew.getJSONArray("clinics");
-
+				query = jsonNew.getJSONArray("clinics");				
 				
 				for (int i = 0; i < query.length(); i++) {
-					clinicName = ((JSONObject) query.get(i)).get("name").toString();
-					clinic_Model.setName(clinicName);
-					listOfClinic.add(new Clinic_Model(clinic_Model.getName()));
+					Map<String, Boolean> map = new HashMap<String, Boolean>();
+					day = "";
+					jsonObject = query.getJSONObject(i).getJSONObject("days");
+						
+					//fetching the days
+						for(int j=0; j<days.length; j++){
+							if(jsonObject.getBoolean(days[j]) == true){
+								map.put(days[j], jsonObject.getBoolean(days[j]));
+								day += days[j].replace(days[j].charAt(0), days[j].toUpperCase().charAt(0)) + "  ";
+							}
+						}
+					
+						//fetching the service_option_ids
+						JSONArray arrayOptionId = query.getJSONObject(i).getJSONArray("service_option_ids");
+						for(int k=0; k<arrayOptionId.length();k++){
+							serviceOptionIds = arrayOptionId.getInt(k);
+							
+							if(serviceOptionIds==SO_Id){
+								clinicName = ((JSONObject) query.get(i)).get("name").toString();
+								recurrence =  ((JSONObject) query.get(i)).get("recurrence").toString();
+								address = ((JSONObject) query.get(i)).get("address").toString();
+								
+								
+								clinic_Model.setName(clinicName);
+								clinic_Model.setRecurrence(recurrence);
+								clinic_Model.setDay(day);
+								clinic_Model.setAddress(address);
+								
+								listOfClinic.add(new Clinic_Model(clinic_Model.getName(),
+																  clinic_Model.getRecurrence(),
+																  clinic_Model.getDay(),
+																  clinic_Model.getAddress()));
+							}
+						}
+						
+					
+					
+					
 				}
+				
 
 			} catch (MalformedURLException e) {
 				e.printStackTrace();
@@ -146,7 +205,19 @@ public class SmartClinicsActivity extends ActionBarActivity {
 	}
 	
 	
-	
+	private void registerOnClick(){
+		
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				
+				
+				
+			}
+		});
+	}
 	
 	
 	
