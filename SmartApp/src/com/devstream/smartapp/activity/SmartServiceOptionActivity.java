@@ -143,7 +143,6 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				TextView textView = (TextView) view;
 
 				switch (position) {
 				case 0:

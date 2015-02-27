@@ -196,4 +196,5 @@ public class SmartMainActivity extends ActionBarActivity {
 		}
 	}
 
+	
 }// end class
