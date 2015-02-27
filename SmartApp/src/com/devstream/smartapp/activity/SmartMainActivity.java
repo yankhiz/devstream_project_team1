@@ -65,6 +65,7 @@ public class SmartMainActivity extends ActionBarActivity {
 		buttonLogin = (Button) findViewById(R.id.buttonLogin);
 
 		new LogInTask().execute();
+		//test
 
 	}
 
