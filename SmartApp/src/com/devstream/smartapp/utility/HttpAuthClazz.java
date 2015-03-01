@@ -6,15 +6,17 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.HashMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.util.Log;
 
 public class HttpAuthClazz {
 
 	private static HttpAuthClazz instance;
 	private String authKey;
+	private int responseCode;
 	private HttpURLConnection httpcon;
 	private static final String LOG_IN_URL = "http://54.72.7.91:8888/login";
 
@@ -32,7 +34,7 @@ public class HttpAuthClazz {
 		return instance;
 	}
 
-	public String getAuthKey() {
+	public String getAuthKey(String userName, String userPass) {
 		try {
 			httpcon = (HttpURLConnection) ((new URL(LOG_IN_URL)
 					.openConnection()));
@@ -47,8 +49,8 @@ public class HttpAuthClazz {
 			// String>();
 			JSONObject jsonLogin = new JSONObject();
 			JSONObject credentials = new JSONObject();
-			credentials.put("username", "team_andorra");
-			credentials.put("password", "smartappiscoming");
+			credentials.put("username", userName);
+			credentials.put("password", userPass);
 			jsonLogin.put("login", credentials);
 
 			// form request
@@ -71,6 +73,7 @@ public class HttpAuthClazz {
 			JSONObject json = new JSONObject(sb.toString());
 
 			authKey = (String) ((JSONObject) json.get("login")).get("token");
+			Log.d("MYLOG", "httpcon.getResponseCode(): " + httpcon.getResponseCode());
 			httpcon.disconnect();
 			return authKey;
 			
@@ -82,4 +85,17 @@ public class HttpAuthClazz {
 		}
 		return null;
 	}
+
+	public int getResponseCode() {
+		try {
+			responseCode = httpcon.getResponseCode();
+			Log.d("MYLOG", "getRespomseCode: " + responseCode);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return responseCode;
+	}
+	
+	
 }

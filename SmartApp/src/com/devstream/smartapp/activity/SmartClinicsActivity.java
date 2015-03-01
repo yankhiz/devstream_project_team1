@@ -21,7 +21,9 @@ import com.devstream.smartapp.model.Clinic_Model;
 import com.devstream.smartapp.utility.HttpAuthClazz;
 
 import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
@@ -99,13 +101,15 @@ public class SmartClinicsActivity extends ActionBarActivity {
 
 		@Override
 		protected void onPreExecute() {
+			SharedPreferences preferences = getSharedPreferences("credential", Context.MODE_PRIVATE);
+			token = preferences.getString("authToken", "");
 
 		}
 
 		@Override
 		protected String doInBackground(String... params) {
 			Log.d("asynctask", "doInbackground called");
-			token = HttpAuthClazz.getInstance().getAuthKey();
+			//token = HttpAuthClazz.getInstance().getAuthKey();
 			listOfClinic = new ArrayList<Clinic_Model>();
 			clinic_Model = new Clinic_Model();
 			JSONObject jsonObject;

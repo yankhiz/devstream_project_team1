@@ -53,7 +53,7 @@ public class ServiceProvidersActivity extends ActionBarActivity{
 		
 		populateServiceProviderList();
 
-		new LogInTask().execute();
+		//new LogInTask().execute();
       
 	}
 	
@@ -96,7 +96,7 @@ public class ServiceProvidersActivity extends ActionBarActivity{
 		@Override
 		protected String doInBackground(String... params) {
 			Log.d("asynctask", "doInbackground called");
-			token = HttpAuthClazz.getInstance().getAuthKey();
+			//token = HttpAuthClazz.getInstance().getAuthKey();
 			try {
 				
 				objectUrl = new URL(TABLE_URL);
