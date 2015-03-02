@@ -55,7 +55,12 @@ public class SmartMainActivity extends ActionBarActivity {
 		editTextUserName = (EditText) findViewById(R.id.editTextUsername);
 		editTextPassword = (EditText) findViewById(R.id.editTextPassword);
 		textViewAbout = (TextView) findViewById(R.id.textViewAbout);
-		buttonLogin = (Button) findViewById(R.id.buttonLogin);		
+		buttonLogin = (Button) findViewById(R.id.buttonLogin);	
+		
+		//only use this code to easy fill in the edittext for easy login  for testing
+		//delete this later
+		editTextUserName.setText("team_andorra");
+		editTextPassword.setText("smartappiscoming");
 		
 		buttonLogin.setOnClickListener(new View.OnClickListener() {
 			@Override
