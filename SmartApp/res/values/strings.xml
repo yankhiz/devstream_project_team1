@@ -35,5 +35,6 @@
     <string name="select_service_option">Select Service Option</string>
     <string name="title_activity_clinics">ClinicsActivity</string>
     <string name="hello_world">Hello world!</string>
+    <string name="title_activity_smart_service_user">SmartServiceUserActivity</string>
 
 </resources>

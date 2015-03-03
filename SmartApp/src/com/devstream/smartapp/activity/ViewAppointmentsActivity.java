@@ -120,7 +120,8 @@ public class ViewAppointmentsActivity extends ActionBarActivity implements
 			finish();
 			break;
 		case R.id.textView_Provider:
-			finish();
+			Intent intent2 = new Intent(ViewAppointmentsActivity.this, SmartServiceProvidersActivity.class);
+			startActivity(intent2);
 			break;
 		case R.id.textView_User:
 			finish();

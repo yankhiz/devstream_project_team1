@@ -17,9 +17,9 @@ public class Service_Provider_Model {
 	private String primaryPhone;
 	private String secondaryPhone;
 	
-	public Service_Provider_Model(String userName, String userPass) {
-		this.username = userName;
-		this.password = userPass;
+	public Service_Provider_Model(String name, String primaryPhone) {
+		this.name = name;
+		this.primaryPhone = primaryPhone;
 	}
 
 	public String getName() {
