@@ -66,7 +66,7 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.service_providers);
+		setContentView(R.layout.activity_service_providers);
 
 		getSupportActionBar().setElevation(0);// remove the shadow under
 												// actionbar

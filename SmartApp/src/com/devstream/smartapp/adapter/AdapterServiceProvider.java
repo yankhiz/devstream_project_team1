@@ -46,7 +46,7 @@ public class AdapterServiceProvider extends BaseAdapter{
 	@Override
 	public View getView(int position, View view, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		view = inflater.inflate(R.layout.service_plist_layout, parent, false);
+		view = inflater.inflate(R.layout.listview_for_service_provider, parent, false);
 		
 		TextView textViewName = (TextView) view.findViewById(R.id.providersName);
 		TextView textViewPhone = (TextView) view.findViewById(R.id.providersPhone);
