@@ -6,6 +6,7 @@ import com.devstream.smartapp.R;
 import com.devstream.smartapp.model.Service_Provider_Model;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,9 +44,9 @@ public class AdapterServiceProvider extends BaseAdapter{
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(int position, View view, ViewGroup parent) {
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		View view = inflater.inflate(R.layout.service_plist_layout, parent, false);
+		view = inflater.inflate(R.layout.service_plist_layout, parent, false);
 		
 		TextView textViewName = (TextView) view.findViewById(R.id.providersName);
 		TextView textViewPhone = (TextView) view.findViewById(R.id.providersPhone);
@@ -54,6 +55,12 @@ public class AdapterServiceProvider extends BaseAdapter{
 		
 		textViewName.setText(model.getName());
 		textViewPhone.setText(model.getPrimaryPhone());
+		
+		if (position % 2 == 1) {
+			view.setBackgroundColor(Color.parseColor("#B2CCFF"));  
+		} else {
+			view.setBackgroundColor(Color.parseColor("#D1E0FF"));  
+		}
 		
 		return view;
 	}

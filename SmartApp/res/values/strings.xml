@@ -36,5 +36,8 @@
     <string name="title_activity_clinics">ClinicsActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_smart_service_user">SmartServiceUserActivity</string>
+    <string name="buttonBack">Back</string>
+    <string name="buttonCall">Call</string>
+    <string name="buttonEdit">Edit</string>
 
 </resources>

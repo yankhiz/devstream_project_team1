@@ -7,7 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -23,14 +24,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.devstream.smartapp.R;
+import com.devstream.smartapp.R.layout;
 import com.devstream.smartapp.adapter.AdapterServiceProvider;
+import com.devstream.smartapp.model.Clinic_Model;
 import com.devstream.smartapp.model.Service_Provider_Model;
 import com.devstream.smartapp.utility.HttpAuthClazz;
 
@@ -42,12 +48,19 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 	private URL objectUrl;
 
 	private ListView listView;
+	private LinearLayout layout;
 	private AdapterServiceProvider adapterServiceProvider;
+	private TextView tv_name, tv_userName, tv_email, tv_primayPhone, tv_secondaryPhone,
+			tv_adminAccess, tv_active, tv_occupation, tv_jobLevel;
+	private Button buttonBack, buttonCall, buttonEdit;
 	private EditText editTextUserName, editTextPassword;
 	private ArrayList<Service_Provider_Model> providersList;
 	private Service_Provider_Model serviceProvider;
-	private String userName;
-	private String phoneNumber;
+
+	
+	private String name, username, email, password, jobOccupation, jobLevel, primaryPhone, secondaryPhone;
+	private boolean active, admin;
+	private int id;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +75,24 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 		getSupportActionBar().setTitle("Service providers");
 		getSupportActionBar().setBackgroundDrawable(
 				new ColorDrawable(Color.parseColor("#B2CCFF")));
-		
+
 		listView = (ListView) findViewById(R.id.lv_listOfProviders);
+		layout = (LinearLayout) findViewById(R.id.layout_userPovider);
+		tv_name = (TextView) findViewById(R.id.textViewProvidersName);
+		tv_userName = (TextView) findViewById(R.id._userName);
+		tv_email = (TextView) findViewById(R.id._email);
+		tv_primayPhone = (TextView) findViewById(R.id._primaryPhone);
+		tv_secondaryPhone = (TextView) findViewById(R.id._secondaryPhone);
+		tv_adminAccess = (TextView) findViewById(R.id._adminAccess);
+		tv_active = (TextView) findViewById(R.id._active);
+		tv_occupation = (TextView) findViewById(R.id._occupation);
+		tv_jobLevel = (TextView) findViewById(R.id._jobLevel);
+		
+		buttonBack = (Button) findViewById(R.id.buttonBack);
+		
 
 		new FetchServiceProvidersTask().execute();
+		registerOnClick();
 
 	}
 
@@ -86,6 +113,22 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	/**
+	 * Sort the output of data
+	 */
+	public void sortData() {
+		Collections.sort(providersList,
+				new Comparator<Service_Provider_Model>() {
+
+					@Override
+					public int compare(Service_Provider_Model lhs,
+							Service_Provider_Model rhs) {
+						// TODO Auto-generated method stub
+						return lhs.getName().compareTo(rhs.getName());
+					}
+				});
 	}
 
 	/**
@@ -133,14 +176,22 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 				JSONArray query = jsonNew.getJSONArray("service_providers");
 
 				for (int i = 0; i < query.length(); i++) {
-					userName = ((JSONObject) query.get(i)).get("username")
-							.toString();
-					phoneNumber = ((JSONObject) query.get(i)).get(
-							"primary_phone").toString();
+					id = ((JSONObject) query.get(i)).getInt("id");
+					name = ((JSONObject) query.get(i)).get("name").toString();
+					username = ((JSONObject) query.get(i)).get("username").toString();
+					email = ((JSONObject) query.get(i)).get("email").toString();
+					active = ((JSONObject) query.get(i)).getBoolean("active");
+					password = ((JSONObject) query.get(i)).get("password").toString();
+					admin = ((JSONObject) query.get(i)).getBoolean("admin");
+					jobOccupation = ((JSONObject) query.get(i)).get("job_occupation").toString();
+					jobLevel = ((JSONObject) query.get(i)).get("job_level").toString();
+					primaryPhone = ((JSONObject) query.get(i)).get("primary_phone").toString();
+					secondaryPhone = ((JSONObject) query.get(i)).get("secondary_phone").toString();
 
-					providersList.add(new Service_Provider_Model(userName,
-							phoneNumber));
-
+										
+					providersList.add(new Service_Provider_Model(id,name,username,email,active,
+							password,admin,jobOccupation,jobLevel,
+							primaryPhone, secondaryPhone));
 				}
 
 			} catch (MalformedURLException e) {
@@ -159,13 +210,58 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 
 		@Override
 		protected void onPostExecute(String result) {
+			sortData();
+
 			Log.d("SmartServiceProvidersAsynctask", "postexecute called");
 			adapterServiceProvider = new AdapterServiceProvider(
-					SmartServiceProvidersActivity.this, providersList);			
+					SmartServiceProvidersActivity.this, providersList);
 			listView.setAdapter(adapterServiceProvider);
 
 		}
 
 	}
 
-}
+	private void registerOnClick() {
+
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+
+				if (listView.getVisibility() == View.VISIBLE) {
+					listView.setVisibility(View.GONE);
+					layout.setVisibility(View.VISIBLE);
+				}
+				
+				serviceProvider = providersList
+						.get(position);
+
+				tv_name.setText(serviceProvider.getName());
+				tv_userName.setText(serviceProvider.getUsername());
+				tv_email.setText(serviceProvider.getEmail());
+				tv_primayPhone.setText(serviceProvider.getPrimaryPhone());
+				tv_secondaryPhone.setText(serviceProvider.getSecondaryPhone());
+				tv_adminAccess.setText(String.valueOf(serviceProvider.getAdmin()));
+				tv_active.setText(String.valueOf(serviceProvider.getActive()));
+				tv_occupation.setText(serviceProvider.getJobOccupation());
+				tv_jobLevel.setText(serviceProvider.getJobLevel());
+
+			}
+		});
+	}
+	
+	public void back(View view){
+		layout.setVisibility(View.GONE);
+		listView.setVisibility(View.VISIBLE);
+	}
+	
+	public void call(View view){
+		Toast.makeText(SmartServiceProvidersActivity.this, "call number "+ serviceProvider.getPrimaryPhone(), 5).show();
+	}
+	
+	public void editData(View view){
+		Toast.makeText(SmartServiceProvidersActivity.this, "edit userName "+ serviceProvider.getUsername(), 5).show();
+	}
+
+}// end class

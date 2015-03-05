@@ -3,155 +3,246 @@ package com.devstream.smartapp.model;
 import java.util.Date;
 
 public class Service_User_Model {
+
+	private int mServiceUserId;
+	private int mBabyId;
+	private int mPregnancyId;
+	private String mHospitalNumber;
+
+	// Personal fields
+	private String mHomeType;
+	private String mHomeAddress;
+	private String mHomeCounty;
+	private String mHomePostcode;
+	private String mDirections;
+	private Date mDOB;
+	private String mEmail;
+	private String mHomePhone;
+	private String mMobilePhone;
+	private String mName;
+	private String mNextOfKinPhone;
+	private String mNextOfKinName;
+
+	// Clinical fields
+	private String mBloodType;// blood_group
+	private double mBMI;
+	private String mParity;
+	private String mPreviousObstetricHistory;
+	private boolean mRhesus;
 	
 	
+	
+
 	public Service_User_Model() {
 		super();
-	}
-
-	private int id;
-	private String bloodType;
-	private Date estimatedDeliveryDate;
-	private String hospitalNumber;	
-	private String homeType;
-	private String homeAddress;
-	private String homeCounty;
-	private String homePostcode;
-	private String directions;
-	private Date dob;
-	private String email;
-	private String homePhone;
-	private String mobilePhone;
-	private String name;
-	private String nextOfKinPhone;
-	private String nextOfKinName;
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getBloodType() {
-		return bloodType;
-	}
-
-	public void setBloodType(String bloodType) {
-		this.bloodType = bloodType;
-	}
-
-	public Date getEstimatedDeliveryDate() {
-		return estimatedDeliveryDate;
-	}
-
-	public void setEstimatedDeliveryDate(Date estimatedDeliveryDate) {
-		this.estimatedDeliveryDate = estimatedDeliveryDate;
-	}
-
-	public String getHospitalNumber() {
-		return hospitalNumber;
-	}
-
-	public void setHospitalNumber(String hospitalNumber) {
-		this.hospitalNumber = hospitalNumber;
-	}
+	}	
 	
-	public String getHomeType() {
-		return homeType;
+
+	public Service_User_Model(String mName) {
+		super();
+		this.mName = mName;
 	}
 
-	public void setHomeType(String homeType) {
-		this.homeType = homeType;
+
+	public Service_User_Model(int mServiceUserId, int mBabyId,
+			int mPregnancyId, String mHospitalNumber, String mHomeType,
+			String mHomeAddress, String mHomeCounty, String mHomePostcode,
+			String mDirections, Date mDOB, String mEmail, String mHomePhone,
+			String mMobilePhone, String mName, String mNextOfKinPhone,
+			String mNextOfKinName, String mBloodType, double mBMI,
+			String mParity, String mPreviousObstetricHistory, boolean mRhesus) {
+		super();
+		this.mServiceUserId = mServiceUserId;
+		this.mBabyId = mBabyId;
+		this.mPregnancyId = mPregnancyId;
+		this.mHospitalNumber = mHospitalNumber;
+		this.mHomeType = mHomeType;
+		this.mHomeAddress = mHomeAddress;
+		this.mHomeCounty = mHomeCounty;
+		this.mHomePostcode = mHomePostcode;
+		this.mDirections = mDirections;
+		this.mDOB = mDOB;
+		this.mEmail = mEmail;
+		this.mHomePhone = mHomePhone;
+		this.mMobilePhone = mMobilePhone;
+		this.mName = mName;
+		this.mNextOfKinPhone = mNextOfKinPhone;
+		this.mNextOfKinName = mNextOfKinName;
+		this.mBloodType = mBloodType;
+		this.mBMI = mBMI;
+		this.mParity = mParity;
+		this.mPreviousObstetricHistory = mPreviousObstetricHistory;
+		this.mRhesus = mRhesus;
 	}
 
-	public String getHomeAddress() {
-		return homeAddress;
+
+
+	public int getmServiceUserId() {
+		return mServiceUserId;
 	}
 
-	public void setHomeAddress(String homeAddress) {
-		this.homeAddress = homeAddress;
+	public void setmServiceUserId(int mServiceUserId) {
+		this.mServiceUserId = mServiceUserId;
 	}
 
-	public String getHomeCounty() {
-		return homeCounty;
+	public int getmBabyId() {
+		return mBabyId;
 	}
 
-	public void setHomeCounty(String homeCounty) {
-		this.homeCounty = homeCounty;
+	public void setmBabyId(int mBabyId) {
+		this.mBabyId = mBabyId;
 	}
 
-	public String getHomePostcode() {
-		return homePostcode;
+	public int getmPregnancyId() {
+		return mPregnancyId;
 	}
 
-	public void setHomePostcode(String homePostcode) {
-		this.homePostcode = homePostcode;
+	public void setmPregnancyId(int mPregnancyId) {
+		this.mPregnancyId = mPregnancyId;
 	}
 
-	public String getDirections() {
-		return directions;
+	public String getmHospitalNumber() {
+		return mHospitalNumber;
 	}
 
-	public void setDirections(String directions) {
-		this.directions = directions;
+	public void setmHospitalNumber(String mHospitalNumber) {
+		this.mHospitalNumber = mHospitalNumber;
 	}
 
-	public Date getDob() {
-		return dob;
+	public String getmHomeType() {
+		return mHomeType;
 	}
 
-	public void setDob(Date dob) {
-		this.dob = dob;
+	public void setmHomeType(String mHomeType) {
+		this.mHomeType = mHomeType;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getmHomeAddress() {
+		return mHomeAddress;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setmHomeAddress(String mHomeAddress) {
+		this.mHomeAddress = mHomeAddress;
 	}
 
-	public String getHomePhone() {
-		return homePhone;
+	public String getmHomeCounty() {
+		return mHomeCounty;
 	}
 
-	public void setHomePhone(String homePhone) {
-		this.homePhone = homePhone;
+	public void setmHomeCounty(String mHomeCounty) {
+		this.mHomeCounty = mHomeCounty;
 	}
 
-	public String getMobilePhone() {
-		return mobilePhone;
+	public String getmHomePostcode() {
+		return mHomePostcode;
 	}
 
-	public void setMobilePhone(String mobilePhone) {
-		this.mobilePhone = mobilePhone;
+	public void setmHomePostcode(String mHomePostcode) {
+		this.mHomePostcode = mHomePostcode;
 	}
 
-	public String getName() {
-		return name;
+	public String getmDirections() {
+		return mDirections;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setmDirections(String mDirections) {
+		this.mDirections = mDirections;
 	}
 
-	public String getNextOfKinPhone() {
-		return nextOfKinPhone;
+	public Date getmDOB() {
+		return mDOB;
 	}
 
-	public void setNextOfKinPhone(String nextOfKinPhone) {
-		this.nextOfKinPhone = nextOfKinPhone;
+	public void setmDOB(Date mDOB) {
+		this.mDOB = mDOB;
 	}
 
-	public String getNextOfKinName() {
-		return nextOfKinName;
+	public String getmEmail() {
+		return mEmail;
 	}
 
-	public void setNextOfKinName(String nextOfKinName) {
-		this.nextOfKinName = nextOfKinName;
+	public void setmEmail(String mEmail) {
+		this.mEmail = mEmail;
+	}
+
+	public String getmHomePhone() {
+		return mHomePhone;
+	}
+
+	public void setmHomePhone(String mHomePhone) {
+		this.mHomePhone = mHomePhone;
+	}
+
+	public String getmMobilePhone() {
+		return mMobilePhone;
+	}
+
+	public void setmMobilePhone(String mMobilePhone) {
+		this.mMobilePhone = mMobilePhone;
+	}
+
+	public String getmName() {
+		return mName;
+	}
+
+	public void setmName(String mName) {
+		this.mName = mName;
+	}
+
+	public String getmNextOfKinPhone() {
+		return mNextOfKinPhone;
+	}
+
+	public void setmNextOfKinPhone(String mNextOfKinPhone) {
+		this.mNextOfKinPhone = mNextOfKinPhone;
+	}
+
+	public String getmNextOfKinName() {
+		return mNextOfKinName;
+	}
+
+	public void setmNextOfKinName(String mNextOfKinName) {
+		this.mNextOfKinName = mNextOfKinName;
+	}
+
+	public String getmBloodType() {
+		return mBloodType;
+	}
+
+	public void setmBloodType(String mBloodType) {
+		this.mBloodType = mBloodType;
+	}
+
+	public double getmBMI() {
+		return mBMI;
+	}
+
+	public void setmBMI(double mBMI) {
+		this.mBMI = mBMI;
+	}
+
+	public String getmParity() {
+		return mParity;
+	}
+
+	public void setmParity(String mParity) {
+		this.mParity = mParity;
+	}
+
+	public String getmPreviousObstetricHistory() {
+		return mPreviousObstetricHistory;
+	}
+
+	public void setmPreviousObstetricHistory(String mPreviousObstetricHistory) {
+		this.mPreviousObstetricHistory = mPreviousObstetricHistory;
+	}
+
+	public boolean ismRhesus() {
+		return mRhesus;
+	}
+
+	public void setmRhesus(boolean mRhesus) {
+		this.mRhesus = mRhesus;
 	}
 
 }

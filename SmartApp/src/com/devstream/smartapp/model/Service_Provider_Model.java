@@ -21,6 +21,28 @@ public class Service_Provider_Model {
 		this.name = name;
 		this.primaryPhone = primaryPhone;
 	}
+	
+	
+
+	public Service_Provider_Model(int id, String name, String username,
+			String email, boolean active, String password, boolean admin,
+			String jobOccupation, String jobLevel, String primaryPhone,
+			String secondaryPhone) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.username = username;
+		this.email = email;
+		this.active = active;
+		this.password = password;
+		this.admin = admin;
+		this.jobOccupation = jobOccupation;
+		this.jobLevel = jobLevel;
+		this.primaryPhone = primaryPhone;
+		this.secondaryPhone = secondaryPhone;
+	}
+
+
 
 	public String getName() {
 		return name;
