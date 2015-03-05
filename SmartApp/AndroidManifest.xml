@@ -46,15 +46,17 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.SmartServiceOptionActivity" />
         </activity>
-        <activity
-            android:name=".activity.SmartServiceProvidersActivity">
+        <activity android:name=".activity.SmartServiceProvidersActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activity.ViewAppointmentsActivity" />
         </activity>
         <activity
-            android:name=".SmartServiceUserActivity"
+            android:name="com.devstream.smartapp.activity.SmartServiceUserActivity"
             android:label="@string/title_activity_smart_service_user" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.ViewAppointmentsActivity" />
         </activity>
     </application>
 

@@ -39,5 +39,8 @@
     <string name="buttonBack">Back</string>
     <string name="buttonCall">Call</string>
     <string name="buttonEdit">Edit</string>
+    <string name="textViewAnteNatal">Ante-Natal</string>
+    <string name="textViewPersonal">Personal</string>
+    <string name="textViewPostNatal">Post-Natal</string>
 
 </resources>

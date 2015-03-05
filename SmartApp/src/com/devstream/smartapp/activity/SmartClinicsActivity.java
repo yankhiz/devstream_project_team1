@@ -171,20 +171,6 @@ public class SmartClinicsActivity extends ActionBarActivity {
 							address = ((JSONObject) query.get(i))
 									.get("address").toString();
 
-							/*
-							 * clinic_Model.setName(clinicName);
-							 * clinic_Model.setRecurrence(recurrence);
-							 * clinic_Model.setDay(day);
-							 * clinic_Model.setAddress(address);
-							 */
-
-							/*
-							 * listOfClinic.add(new
-							 * Clinic_Model(clinic_Model.getName(),
-							 * clinic_Model.getRecurrence(),
-							 * clinic_Model.getDay(),
-							 * clinic_Model.getAddress()));
-							 */
 
 							listOfClinic.add(new Clinic_Model(clinicName,
 									recurrence, day, address));

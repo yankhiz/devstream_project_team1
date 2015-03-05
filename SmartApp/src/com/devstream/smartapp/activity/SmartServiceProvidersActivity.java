@@ -50,15 +50,15 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 	private ListView listView;
 	private LinearLayout layout;
 	private AdapterServiceProvider adapterServiceProvider;
-	private TextView tv_name, tv_userName, tv_email, tv_primayPhone, tv_secondaryPhone,
-			tv_adminAccess, tv_active, tv_occupation, tv_jobLevel;
-	private Button buttonBack, buttonCall, buttonEdit;
-	private EditText editTextUserName, editTextPassword;
+	private TextView tv_name, tv_userName, tv_email, tv_primayPhone,
+			tv_secondaryPhone, tv_adminAccess, tv_active, tv_occupation,
+			tv_jobLevel;
+	
 	private ArrayList<Service_Provider_Model> providersList;
 	private Service_Provider_Model serviceProvider;
 
-	
-	private String name, username, email, password, jobOccupation, jobLevel, primaryPhone, secondaryPhone;
+	private String name, username, email, password, jobOccupation, jobLevel,
+			primaryPhone, secondaryPhone;
 	private boolean active, admin;
 	private int id;
 
@@ -87,9 +87,6 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 		tv_active = (TextView) findViewById(R.id._active);
 		tv_occupation = (TextView) findViewById(R.id._occupation);
 		tv_jobLevel = (TextView) findViewById(R.id._jobLevel);
-		
-		buttonBack = (Button) findViewById(R.id.buttonBack);
-		
 
 		new FetchServiceProvidersTask().execute();
 		registerOnClick();
@@ -178,20 +175,26 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 				for (int i = 0; i < query.length(); i++) {
 					id = ((JSONObject) query.get(i)).getInt("id");
 					name = ((JSONObject) query.get(i)).get("name").toString();
-					username = ((JSONObject) query.get(i)).get("username").toString();
+					username = ((JSONObject) query.get(i)).get("username")
+							.toString();
 					email = ((JSONObject) query.get(i)).get("email").toString();
 					active = ((JSONObject) query.get(i)).getBoolean("active");
-					password = ((JSONObject) query.get(i)).get("password").toString();
+					password = ((JSONObject) query.get(i)).get("password")
+							.toString();
 					admin = ((JSONObject) query.get(i)).getBoolean("admin");
-					jobOccupation = ((JSONObject) query.get(i)).get("job_occupation").toString();
-					jobLevel = ((JSONObject) query.get(i)).get("job_level").toString();
-					primaryPhone = ((JSONObject) query.get(i)).get("primary_phone").toString();
-					secondaryPhone = ((JSONObject) query.get(i)).get("secondary_phone").toString();
+					jobOccupation = ((JSONObject) query.get(i)).get(
+							"job_occupation").toString();
+					jobLevel = ((JSONObject) query.get(i)).get("job_level")
+							.toString();
+					primaryPhone = ((JSONObject) query.get(i)).get(
+							"primary_phone").toString();
+					secondaryPhone = ((JSONObject) query.get(i)).get(
+							"secondary_phone").toString();
 
-										
-					providersList.add(new Service_Provider_Model(id,name,username,email,active,
-							password,admin,jobOccupation,jobLevel,
-							primaryPhone, secondaryPhone));
+					providersList.add(new Service_Provider_Model(id, name,
+							username, email, active, password, admin,
+							jobOccupation, jobLevel, primaryPhone,
+							secondaryPhone));
 				}
 
 			} catch (MalformedURLException e) {
@@ -233,16 +236,16 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 					listView.setVisibility(View.GONE);
 					layout.setVisibility(View.VISIBLE);
 				}
-				
-				serviceProvider = providersList
-						.get(position);
+
+				serviceProvider = providersList.get(position);
 
 				tv_name.setText(serviceProvider.getName());
 				tv_userName.setText(serviceProvider.getUsername());
 				tv_email.setText(serviceProvider.getEmail());
 				tv_primayPhone.setText(serviceProvider.getPrimaryPhone());
 				tv_secondaryPhone.setText(serviceProvider.getSecondaryPhone());
-				tv_adminAccess.setText(String.valueOf(serviceProvider.getAdmin()));
+				tv_adminAccess.setText(String.valueOf(serviceProvider
+						.getAdmin()));
 				tv_active.setText(String.valueOf(serviceProvider.getActive()));
 				tv_occupation.setText(serviceProvider.getJobOccupation());
 				tv_jobLevel.setText(serviceProvider.getJobLevel());
@@ -250,18 +253,20 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 			}
 		});
 	}
-	
-	public void back(View view){
+
+	public void back(View view) {
 		layout.setVisibility(View.GONE);
 		listView.setVisibility(View.VISIBLE);
 	}
-	
-	public void call(View view){
-		Toast.makeText(SmartServiceProvidersActivity.this, "call number "+ serviceProvider.getPrimaryPhone(), 5).show();
+
+	public void call(View view) {
+		Toast.makeText(SmartServiceProvidersActivity.this,
+				"call number " + serviceProvider.getPrimaryPhone(), 5).show();
 	}
-	
-	public void editData(View view){
-		Toast.makeText(SmartServiceProvidersActivity.this, "edit userName "+ serviceProvider.getUsername(), 5).show();
+
+	public void editData(View view) {
+		Toast.makeText(SmartServiceProvidersActivity.this,
+				"edit userName " + serviceProvider.getUsername(), 5).show();
 	}
 
 }// end class

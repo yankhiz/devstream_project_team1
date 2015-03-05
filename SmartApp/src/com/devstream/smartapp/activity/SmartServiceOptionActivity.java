@@ -134,7 +134,7 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 			Log.d("allan", "postexecute called");
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 					SmartServiceOptionActivity.this,
-					R.layout.listview_for_servive_option, listOfServiceOption);
+					R.layout.listview_for_service_option, listOfServiceOption);
 
 			listView.setAdapter(adapter);
 		}
