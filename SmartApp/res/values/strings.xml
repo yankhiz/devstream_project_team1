@@ -42,5 +42,23 @@
     <string name="textViewAnteNatal">Ante-Natal</string>
     <string name="textViewPersonal">Personal</string>
     <string name="textViewPostNatal">Post-Natal</string>
+    <string name="hospitalNumber">Hospital Number</string>
+    <string name="email">Email</string>
+    <string name="mobilePhone">Mobile Phone</string>
+    <string name="homePhone">Home Phone</string>
+    <string name="contact">Contact</string>
+    <string name="userName">Username</string>
+    <string name="serviceUserName">Username</string>
+    <string name="housePhone">Home Phone</string>
+    <string name="address">Address</string>
+    <string name="homeType">Home Type</string>
+    <string name="serviceUserAddress">Address</string>
+    <string name="homePostCode">Home Post Code</string>
+    <string name="homeCounty">Home County</string>
+    <string name="nextOfKin">Next Of Kin</string>
+    <string name="nextOfKinPhone">Phone</string>
+    <string name="nextOfKinName">Name</string>
+    <string name="directions">Direction</string>
+    
 
 </resources>

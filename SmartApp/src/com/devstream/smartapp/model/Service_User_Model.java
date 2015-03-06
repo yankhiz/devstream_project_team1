@@ -15,7 +15,7 @@ public class Service_User_Model {
 	private String mHomeCounty;
 	private String mHomePostcode;
 	private String mDirections;
-	private Date mDOB;
+	private String mDOB;
 	private String mEmail;
 	private String mHomePhone;
 	private String mMobilePhone;
@@ -47,7 +47,7 @@ public class Service_User_Model {
 	public Service_User_Model(int mServiceUserId, int mBabyId,
 			int mPregnancyId, String mHospitalNumber, String mHomeType,
 			String mHomeAddress, String mHomeCounty, String mHomePostcode,
-			String mDirections, Date mDOB, String mEmail, String mHomePhone,
+			String mDirections, String mDOB, String mEmail, String mHomePhone,
 			String mMobilePhone, String mName, String mNextOfKinPhone,
 			String mNextOfKinName, String mBloodType, double mBMI,
 			String mParity, String mPreviousObstetricHistory, boolean mRhesus) {
@@ -149,11 +149,11 @@ public class Service_User_Model {
 		this.mDirections = mDirections;
 	}
 
-	public Date getmDOB() {
+	public String getmDOB() {
 		return mDOB;
 	}
 
-	public void setmDOB(Date mDOB) {
+	public void setmDOB(String mDOB) {
 		this.mDOB = mDOB;
 	}
 

@@ -96,7 +96,7 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.smart_main, menu);
+		getMenuInflater().inflate(R.menu.smart_service_provider, menu);
 		return true;
 	}
 
