@@ -83,6 +83,7 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 			
 			progressDialog = new ProgressDialog(SmartServiceOptionActivity.this);
 			//progressDialog.setMessage("Connecting to server....");
+			progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			progressDialog.setCancelable(false);
 			progressDialog.setIndeterminate(true);
 			progressDialog.show();

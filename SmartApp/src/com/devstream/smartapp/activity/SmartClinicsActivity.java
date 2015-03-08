@@ -129,6 +129,7 @@ public class SmartClinicsActivity extends ActionBarActivity {
 			//progressDialog.setMessage("Connecting to server....");
 			progressDialog.setCancelable(false);
 			progressDialog.setIndeterminate(true);
+			progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			progressDialog.show();
 			
 			SharedPreferences preferences = getSharedPreferences("credential", Context.MODE_PRIVATE);

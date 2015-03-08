@@ -156,6 +156,7 @@ public class SmartServiceUserActivity extends ActionBarActivity {
 			//progressDialog.setMessage("Connecting to server....");
 			progressDialog.setCancelable(false);
 			progressDialog.setIndeterminate(true);
+			progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			progressDialog.show();
 			
 			usersList = new ArrayList<Service_User_Model>();

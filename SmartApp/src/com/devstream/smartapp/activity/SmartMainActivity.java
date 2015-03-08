@@ -117,6 +117,7 @@ public class SmartMainActivity extends ActionBarActivity {
 			progressDialog.setMessage("Connecting to server....");
 			progressDialog.setCancelable(false);
 			progressDialog.setIndeterminate(true);
+			progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 			progressDialog.show();
 			intent = new Intent(SmartMainActivity.this,
 					ViewAppointmentsActivity.class);
