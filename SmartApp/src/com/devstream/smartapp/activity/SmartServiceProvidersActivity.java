@@ -14,6 +14,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -61,6 +62,9 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 			primaryPhone, secondaryPhone;
 	private boolean active, admin;
 	private int id;
+	
+	private ProgressDialog progressDialog;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +142,13 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 
 		@Override
 		protected void onPreExecute() {
+			
+			progressDialog = new ProgressDialog(SmartServiceProvidersActivity.this);
+			//progressDialog.setMessage("Connecting to server....");
+			progressDialog.setCancelable(false);
+			progressDialog.setIndeterminate(true);
+			progressDialog.show();
+			
 			providersList = new ArrayList<Service_Provider_Model>();
 			SharedPreferences preferences = getSharedPreferences("credential",
 					Context.MODE_PRIVATE);
@@ -213,6 +224,11 @@ public class SmartServiceProvidersActivity extends ActionBarActivity {
 
 		@Override
 		protected void onPostExecute(String result) {
+			
+			if(progressDialog != null && progressDialog.isShowing()){
+				progressDialog.dismiss();
+			}
+			
 			sortData();
 
 			Log.d("SmartServiceProvidersAsynctask", "postexecute called");

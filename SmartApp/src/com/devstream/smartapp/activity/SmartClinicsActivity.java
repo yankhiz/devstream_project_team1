@@ -21,6 +21,7 @@ import com.devstream.smartapp.model.Clinic_Model;
 import com.devstream.smartapp.utility.HttpAuthClazz;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -60,6 +61,9 @@ public class SmartClinicsActivity extends ActionBarActivity {
 	private String recurrence;
 	private String day;
 	private int serviceOptionIds, SO_Id;
+	
+	private ProgressDialog progressDialog;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +125,12 @@ public class SmartClinicsActivity extends ActionBarActivity {
 
 		@Override
 		protected void onPreExecute() {
+			progressDialog = new ProgressDialog(SmartClinicsActivity.this);
+			//progressDialog.setMessage("Connecting to server....");
+			progressDialog.setCancelable(false);
+			progressDialog.setIndeterminate(true);
+			progressDialog.show();
+			
 			SharedPreferences preferences = getSharedPreferences("credential", Context.MODE_PRIVATE);
 			token = preferences.getString("authToken", "");
 
@@ -215,7 +225,10 @@ public class SmartClinicsActivity extends ActionBarActivity {
 
 		@Override
 		protected void onPostExecute(String result) {
-			Log.d("allan", "postexecute called");
+			if(progressDialog != null && progressDialog.isShowing()){
+				progressDialog.dismiss();
+			}
+			
 			adapterClinic = new AdapterClinic(SmartClinicsActivity.this,
 					listOfClinic);
 

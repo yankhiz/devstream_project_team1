@@ -17,6 +17,7 @@ import com.devstream.smartapp.R;
 import com.devstream.smartapp.model.Appointment_Service_Option_Model;
 import com.devstream.smartapp.utility.HttpAuthClazz;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -45,6 +46,9 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 	private int serviceOptionId;
 	private List<String> listOfServiceOption;
 	private ListView listView;
+	
+	private ProgressDialog progressDialog;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +80,12 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 		protected void onPreExecute() {
 			SharedPreferences preferences = getSharedPreferences("credential", Context.MODE_PRIVATE);
 			token = preferences.getString("authToken", "");
+			
+			progressDialog = new ProgressDialog(SmartServiceOptionActivity.this);
+			//progressDialog.setMessage("Connecting to server....");
+			progressDialog.setCancelable(false);
+			progressDialog.setIndeterminate(true);
+			progressDialog.show();
 
 		}
 
@@ -132,6 +142,11 @@ public class SmartServiceOptionActivity extends ActionBarActivity {
 		@Override
 		protected void onPostExecute(String result) {
 			Log.d("allan", "postexecute called");
+			
+			if(progressDialog != null && progressDialog.isShowing()){
+				progressDialog.dismiss();
+			}
+			
 			ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 					SmartServiceOptionActivity.this,
 					R.layout.listview_for_service_option, listOfServiceOption);

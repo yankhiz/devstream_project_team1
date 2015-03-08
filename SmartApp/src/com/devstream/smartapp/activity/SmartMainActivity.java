@@ -8,6 +8,7 @@ import com.devstream.smartapp.model.Service_Provider_Model;
 import com.devstream.smartapp.utility.HttpAuthClazz;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -43,6 +44,7 @@ public class SmartMainActivity extends ActionBarActivity {
 	private Service_Provider_Model serviceProvider;
 	
 	private Intent intent;
+	private ProgressDialog progressDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +113,11 @@ public class SmartMainActivity extends ActionBarActivity {
 
 		@Override
 		protected void onPreExecute() {
+			progressDialog = new ProgressDialog(SmartMainActivity.this);
+			progressDialog.setMessage("Connecting to server....");
+			progressDialog.setCancelable(false);
+			progressDialog.setIndeterminate(true);
+			progressDialog.show();
 			intent = new Intent(SmartMainActivity.this,
 					ViewAppointmentsActivity.class);
 		}
@@ -133,6 +140,9 @@ public class SmartMainActivity extends ActionBarActivity {
 			Editor editor = preferences.edit();
 			editor.putString("authToken", token);
 			
+			if(progressDialog != null && progressDialog.isShowing()){
+				progressDialog.dismiss();
+			}
 			
 			if(result == RESPONSE_CODE_CREATED){
 				editor.commit();

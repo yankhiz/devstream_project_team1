@@ -20,6 +20,7 @@ import com.devstream.smartapp.adapter.AdapterServiceUser;
 import com.devstream.smartapp.model.Service_User_Model;
 
 import android.support.v7.app.ActionBarActivity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -63,6 +64,9 @@ public class SmartServiceUserActivity extends ActionBarActivity {
 	private int mServiceUserId, mBabyId, mPregnancyId;
 	private double mBMI;
 	private boolean mRhesus;
+	
+	private ProgressDialog progressDialog;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +152,12 @@ public class SmartServiceUserActivity extends ActionBarActivity {
 
 		@Override
 		protected void onPreExecute() {
+			progressDialog = new ProgressDialog(SmartServiceUserActivity.this);
+			//progressDialog.setMessage("Connecting to server....");
+			progressDialog.setCancelable(false);
+			progressDialog.setIndeterminate(true);
+			progressDialog.show();
+			
 			usersList = new ArrayList<Service_User_Model>();
 			SharedPreferences preferences = getSharedPreferences("credential",
 					Context.MODE_PRIVATE);
@@ -273,6 +283,11 @@ public class SmartServiceUserActivity extends ActionBarActivity {
 
 		@Override
 		protected void onPostExecute(String result) {
+			
+			if(progressDialog != null && progressDialog.isShowing()){
+				progressDialog.dismiss();
+			}
+			
 			sortData();
 			Log.d("SmartServiceUsersAsynctask", "postexecute called");
 			adapterServiceUser = new AdapterServiceUser(
